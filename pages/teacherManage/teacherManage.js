@@ -7,7 +7,11 @@ Page({
   data: {
 
   },
-
+  toAddTeacher: function () {
+    wx.navigateTo({
+      url: '../addTeacher/addTeacher',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

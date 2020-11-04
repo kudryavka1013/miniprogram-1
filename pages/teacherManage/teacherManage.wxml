@@ -1,3 +1,24 @@
 <!--pages/teacherManage/teacherManage.wxml-->
-<text>pages/teacherManage/teacherManage.wxml</text>
-<van-button round icon="plus" bind:click="" class="add-button"></van-button>
+<span>教师管理</span>
+
+	<van-swipe-cell right-width="{{ 65 }}" left-width="{{ 65 }}">
+		<van-cell-group>
+			<van-cell title="单元格" value="内容" />
+		</van-cell-group>
+		<view slot="right">删除</view>
+	</van-swipe-cell>
+  
+	<van-swipe-cell right-width="{{ 65 }}" left-width="{{ 0 }}">
+		<van-cell-group>
+			<van-cell title="单元格" value="内容" />
+		</van-cell-group>
+		<view slot="right">删除</view>
+	</van-swipe-cell>
+	<van-swipe-cell right-width="{{ 65 }}" left-width="{{ 65 }}">
+		<van-cell-group>
+			<van-cell title="单元格" value="内容" />
+		</van-cell-group>
+		<view slot="right">删除</view>
+	</van-swipe-cell>
+
+<van-button round icon="plus" bind:click="toAddTeacher" class="add-button" />

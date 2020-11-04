@@ -24,7 +24,7 @@ Page({
       },
       {
         "icon":"contact",
-        "text":"我的",
+        "text":"我的信息",
         "clickevent":"toMyStatus"
       },
     ]
