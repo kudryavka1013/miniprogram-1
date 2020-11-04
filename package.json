@@ -1,0 +1,23 @@
+{
+  "name": "miniprogram-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "@vant/weapp": "^1.5.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kudryavka1013/miniprogram-1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kudryavka1013/miniprogram-1/issues"
+  },
+  "homepage": "https://github.com/kudryavka1013/miniprogram-1#readme"
+}

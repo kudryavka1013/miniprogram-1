@@ -1,0 +1,3 @@
+<!--pages/teacherManage/teacherManage.wxml-->
+<text>pages/teacherManage/teacherManage.wxml</text>
+<van-button round icon="plus" bind:click="" class="add-button"></van-button>

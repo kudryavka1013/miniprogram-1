@@ -1,14 +1,19 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/teacher/teacher",
+    "pages/admin/admin",
+    "pages/teacherManage/teacherManage",
+    "pages/studentManage/studentManage",
+    "pages/courseManage/courseManage",
+    "pages/myStatus/myStatus",
+    "pages/addTeacher/addTeacher"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
-  "style": "v2",
   "sitemapLocation": "sitemap.json"
 }

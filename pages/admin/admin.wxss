@@ -1,0 +1,4 @@
+/* pages/admin/admin.wxss */
+.container{
+  margin: 10px;
+}
