@@ -1,24 +1,27 @@
 <!--pages/teacherManage/teacherManage.wxml-->
-<span>教师管理</span>
+<page-meta>
+  <navigation-bar
+    title="教师管理"
+  />
+</page-meta>
 
-	<van-swipe-cell right-width="{{ 65 }}" left-width="{{ 65 }}">
-		<van-cell-group>
-			<van-cell title="单元格" value="内容" />
-		</van-cell-group>
-		<view slot="right">删除</view>
-	</van-swipe-cell>
-  
-	<van-swipe-cell right-width="{{ 65 }}" left-width="{{ 0 }}">
-		<van-cell-group>
-			<van-cell title="单元格" value="内容" />
-		</van-cell-group>
-		<view slot="right">删除</view>
-	</van-swipe-cell>
-	<van-swipe-cell right-width="{{ 65 }}" left-width="{{ 65 }}">
-		<van-cell-group>
-			<van-cell title="单元格" value="内容" />
-		</van-cell-group>
-		<view slot="right">删除</view>
-	</van-swipe-cell>
+<van-swipe-cell right-width="65" wx:for="{{ teacherList }}">
+  <van-cell-group>
+	<van-cell jsize="large" title="{{ item.teacherName }}" value="{{ item.teacherId }}"/>
+	  </van-cell-group>
+	<view slot="right" class="van-swipe-cell-right">删除</view>
+</van-swipe-cell>
 
-<van-button round icon="plus" bind:click="toAddTeacher" class="add-button" />
+<van-overlay show="{{ isAddShow }}" >
+	<view class="container">
+		<view class="addWrapper">
+			<van-field size="large" error="{{ isError }}" value="{{ newTeacherName }}" label="教师姓名" placeholder="请输入姓名" border="{{ false }}" bind:change="onNameChange"/>
+			<view class="add-button-group"> 
+				<van-button type="info" bind:click="onSaveTeacher">确认添加</van-button>
+				<van-button plain type="info" bind:click="onClickHide">取消</van-button>
+			</view>
+		</view>
+		</view>
+</van-overlay>
+
+<van-button type="info" icon="plus" bind:click="toAddTeacher" class="add-button"/>

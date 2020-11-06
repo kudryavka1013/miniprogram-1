@@ -1,2 +1,24 @@
 <!--pages/studentManage/studentManage.wxml-->
-<text>pages/studentManage/studentManage.wxml</text>
+<page-meta>
+	<navigation-bar title="学生管理" />
+</page-meta>
+
+<van-swipe-cell right-width="65" wx:for="{{ studentList }}">
+	<van-cell title="{{ item.studentName }}" value="{{ item.studentId }}" />
+	<view slot="right" class="van-swipe-cell-right">删除</view>
+</van-swipe-cell>
+
+<van-overlay show="{{ isAddShow }}">
+	<view class="container">
+		<view class="addWrapper">
+			<van-field size="large" error="{{ isNameError }}" value="{{ newStudentName }}" label="学生姓名" placeholder="请输入姓名" border="{{ false }}" bind:change="onNameChange" />
+			<van-field size="large" error="{{ isIdError }}" value="{{ newStudentId }}" label="学生学号" placeholder="请输入学号" border="{{ false }}" bind:change="onIdChange" />
+			<view class="add-button-group">
+				<van-button type="info" bind:click="onSaveStudent">确认添加</van-button>
+				<van-button plain type="info" bind:click="onClickHide">取消</van-button>
+			</view>
+		</view>
+	</view>
+</van-overlay>
+
+<van-button type="info" icon="plus" bind:click="toAddStudent" class="add-button" />

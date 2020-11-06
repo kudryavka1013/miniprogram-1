@@ -1,4 +1,6 @@
 /* pages/admin/admin.wxss */
 .container{
-  margin: 10px;
+  height: 100%;
+  padding-top: 20px;
+  background-color: #2196F3;
 }

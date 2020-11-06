@@ -2,6 +2,18 @@
 <!-- <van-tabbar active="{{ active }}" bind:change="onChange">
   <van-tabbar-item wx:for="{{ list }}" icon="{{ item.icon }}">{{ item.text }}</van-tabbar-item>
 </van-tabbar> -->
-<view class="container" wx:for="{{ list }}" wx:key="index">
+<!-- <view class="container" wx:for="{{ list }}" wx:key="index">
   <van-button block type="primary" icon="{{item.icon}}" bind:click="{{ item.clickevent }}">{{ item.text }}</van-button>
+</view> -->
+
+<page-meta>
+  <navigation-bar
+    title="教务员系统"
+    background-color="#2196F3"
+  />
+</page-meta>
+<view class="container">
+<van-grid square clickable column-num="2" gutter="20">
+  <van-grid-item wx:for="{{ list }}" wx:key="index" icon="{{ item.icon }}" bind:click="{{ item.clickevent }}" text="{{ item.text }}"/>
+</van-grid>
 </view>

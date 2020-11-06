@@ -1,1 +1,55 @@
 /* pages/studentManage/studentManage.wxss */
+.title{
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  color: white;
+  background-color: #2196F3;
+}
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.addWrapper {
+  position: relative;
+  top: -50px;
+  margin: 20rpx;
+  padding: 10rpx;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+}
+
+.add-button-group {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 5px;
+}
+.add-button{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.van-swipe-cell-right {
+  /*flex 布局*/
+  display: flex;
+  /*实现垂直居中*/
+  align-items: center;
+  /* 实现水平居中 */
+  justify-content: center;
+  width: 65px;
+  height: 100%;
+  background-color: #ee0a24;
+  color: white;
+}

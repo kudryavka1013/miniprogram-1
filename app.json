@@ -6,15 +6,13 @@
     "pages/teacherManage/teacherManage",
     "pages/studentManage/studentManage",
     "pages/courseManage/courseManage",
-    "pages/myStatus/myStatus",
-    "pages/addTeacher/addTeacher"
+    "pages/myStatus/myStatus"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#2196F3",
+    "navigationBarTitleText": "教务系统",
+    "navigationBarTextStyle": "white"
   },
   "sitemapLocation": "sitemap.json"
-
 }

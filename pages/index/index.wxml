@@ -1,5 +1,5 @@
 <!--index.wxml-->
 <view class="container">
-  <van-button block bind:click="toAdmin" type="primary" class="button">教务员入口</van-button>
-  <van-button block bind:click="toTeacher" type="primary" class="button">教师入口</van-button>
+  <van-button block type="info" bind:click="toAdmin" class="button">教务员入口</van-button>
+  <van-button block type="info" bind:click="toTeacher" class="button">教师入口</van-button>
 </view>
