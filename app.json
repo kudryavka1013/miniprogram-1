@@ -6,7 +6,8 @@
     "pages/teacherManage/teacherManage",
     "pages/studentManage/studentManage",
     "pages/courseManage/courseManage",
-    "pages/myStatus/myStatus"
+    "pages/myStatus/myStatus",
+    "pages/addCourse/addCourse"
   ],
   "window": {
     "backgroundTextStyle": "light",

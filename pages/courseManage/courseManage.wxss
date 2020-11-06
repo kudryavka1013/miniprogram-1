@@ -1,1 +1,39 @@
 /* pages/courseManage/courseManage.wxss */
+page{
+    background-color: #f0f3f6;
+}
+.wrapper{
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 8px 12px #ebedf0;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.class-name{
+    font-size: large;
+    
+}
+
+.class-time{
+
+}
+
+.time-wrapper{
+    height: 100%;
+    width: 100%;
+    background-color: yellow;
+}
+.class-teacher{
+
+}
+
+.add-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  }

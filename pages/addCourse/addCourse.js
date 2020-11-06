@@ -1,4 +1,4 @@
-// pages/courseManage/courseManage.js
+// pages/addCourse/addCourse.js
 Page({
 
   /**
@@ -15,11 +15,6 @@ Page({
 
   },
 
-  toAddCourse:function(){
-    wx.navigateTo({
-      url:'/pages/addCourse/addCourse'
-    })
-  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
