@@ -7,13 +7,22 @@
 </view> -->
 
 <page-meta>
-  <navigation-bar
-    title="教务员系统"
-    background-color="#2196F3"
-  />
+	<navigation-bar title="教务员系统" />
 </page-meta>
 <view class="container">
-<van-grid square clickable column-num="2" gutter="20">
-  <van-grid-item wx:for="{{ list }}" wx:key="index" icon="{{ item.icon }}" bind:click="{{ item.clickevent }}" text="{{ item.text }}"/>
-</van-grid>
+	<van-grid
+	 square
+	 clickable
+	 column-num="2"
+	 gutter="20"
+	>
+		<van-grid-item
+		 wx:for="{{ list }}"
+		 wx:key="index"
+		 icon="{{ item.icon }}"
+		 bind:click="{{ item.clickevent }}"
+		 text="{{ item.text }}"
+		/>
+	</van-grid>
 </view>
+

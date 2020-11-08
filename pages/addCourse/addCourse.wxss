@@ -1,1 +1,17 @@
 /* pages/addCourse/addCourse.wxss */
+.button{
+    margin: 10px;
+}
+
+.van-swipe-cell-right {
+    /*flex 布局*/
+    display: flex;
+    /*实现垂直居中*/
+    align-items: center;
+    /* 实现水平居中 */
+    justify-content: center;
+    width: 65px;
+    height: 100%;
+    background-color: #ee0a24;
+    color: white;
+  }

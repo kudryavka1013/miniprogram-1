@@ -1,18 +1,100 @@
 <!--pages/addCourse/addCourse.wxml-->
-<text>pages/addCourse/addCourse.wxml</text>
+<page-meta>
+	<navigation-bar title="添加课程" />
+</page-meta>
+
+<van-dialog id="van-dialog" />
+<!-- 课程名称 -->
+<van-field
+ size="large"
+ label="课程名称"
+ input-align="right"
+ value="{{className}}"
+ placeholder="请输入课程名称"
+ bind:change="onClassNameChange"
+/>
+<!-- 任课教师 -->
+<van-cell
+ size="large"
+ title="任课教师"
+ value="{{teacherName}}"
+ bind:click="onAddTeacher"
+ clickable
+/>
+<!-- 时间段列表循环 -->
+<van-cell-group title="课程时间">
+	<van-swipe-cell
+	 right-width="65"
+	 wx:for="{{ timeList }}"
+	 wx:key="index"
+	 async-close
+	 bind:close="onClose"
+	>
+		<van-cell title="{{ item.weekday }}" value="{{ item.session }}" />
+		<view slot="right" class="van-swipe-cell-right">删除
+		</view>
+	</van-swipe-cell>
+</van-cell-group>
+<!-- <van-cell-group title="课程时间">
+	<van-cell
+	 title="{{item.weekday}}"
+	 value="{{item.session}}"
+	 wx:for="{{timeList}}"
+	 wx:key="index"
+	/>
+</van-cell-group> -->
+
+<view class="button">
+	<van-button
+	 block
+	 plain
+	 type="info"
+	 icon="plus"
+	 bind:click="onAddTime"
+	>
+		添加时间段
+	</van-button>
+</view>
+
+<view class="button">
+	<van-button
+	 block
+	 type="info"
+	 bind:click="onSaveCourse"
+	>
+		确认添加
+	</van-button>
+</view>
+
+<!-- 弹出层：选择任课教师 -->
 <van-popup
- show="{{ show }}"
+ show="{{ showTeacher }}"
  position="bottom"
  custom-style="height: 40%;"
- bind:close="onClose"
+ bind:close="onCloseTeacher"
+>
+	<van-picker
+	 show-toolbar
+	 title="选择任课教师"
+	 columns="{{ teacherList }}"
+	 bind:cancel="onCancelTeacher"
+	 bind:confirm="onConfirmTeacher"
+	/>
+</van-popup>
+
+<!-- 弹出层：选择上课时间 -->
+<van-popup
+ show="{{ showTime }}"
+ position="bottom"
+ custom-style="height: 40%;"
+ bind:close="onCloseTime"
 >
 	<van-picker
 	 show-toolbar
 	 title="选择上课时间"
-	 columns="{{ columns }}"
-	 bind:cancel="onCancel"
-	 bind:confirm="onConfirm"
-	 bind:change="onChange"
+	 columns="{{ timeslot }}"
+	 bind:cancel="onCancelTime"
+	 bind:confirm="onConfirmTime"
 	/>
 </van-popup>
 
