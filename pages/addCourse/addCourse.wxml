@@ -1,2 +1,18 @@
 <!--pages/addCourse/addCourse.wxml-->
 <text>pages/addCourse/addCourse.wxml</text>
+<van-popup
+ show="{{ show }}"
+ position="bottom"
+ custom-style="height: 40%;"
+ bind:close="onClose"
+>
+	<van-picker
+	 show-toolbar
+	 title="选择上课时间"
+	 columns="{{ columns }}"
+	 bind:cancel="onCancel"
+	 bind:confirm="onConfirm"
+	 bind:change="onChange"
+	/>
+</van-popup>
+
