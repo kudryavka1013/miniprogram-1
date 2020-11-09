@@ -1,4 +1,6 @@
 // pages/addCourse/addCourse.js
+import Toast from '@vant/weapp/toast/toast';
+
 Page({
 
   /**
@@ -10,6 +12,8 @@ Page({
     showTime: false,
     showTeacher: false,
     isDisabled: false,
+    //id从0开始
+    timeId: 0,
     timeslot: [{
         values: ['周一', '周二', '周三', '周四', '周五'],
       },
@@ -25,6 +29,19 @@ Page({
    */
   onLoad: function (options) {
     // 此处应获取教师列表
+    wx.request({
+      method: 'GET',
+      url:'https://www.fastmock.site/mock/8620899d8291f4be26eff671db045375/web/admin/teacherList',
+      success (res) {
+        console.log(res.data)
+      }
+    })
+  },
+
+  idIncrease: function () {
+    this.setData({
+      timeId: this.data.timeId + 1
+    })
   },
 
   onAddTeacher() {
@@ -67,32 +84,63 @@ Page({
       showTime: false
     })
   },
+
   onConfirmTime(event) {
-    var temp = {
+    const temp = {
+      id: this.data.timeId,
       weekday: event.detail.value[0],
       session: event.detail.value[1]
     }
+    var list = this.data.timeList
+    //判断是否重复
+    for (var i = 0; i < list.length; i++) {
+      if (temp.weekday == list[i].weekday && temp.session == list[i].session) {
+        console.log('isRedundant')
+        Toast({
+          type: 'fail',
+          position: 'top',
+          message: '时间段重复'
+        });
+        return
+      }
+    }
+    this.idIncrease()
     this.data.timeList.push(temp)
+    console.log(this.data.timeList)
     //此处应有整理数组，将列表按时间顺序排好
     this.setData({
       showTime: false,
       timeList: this.data.timeList
     })
   },
-  onClose(event){
+  onClose(event) {
     console.log(event)
-    console.log(event.detail)
-    const { position, instance } = event.detail;
+    // console.log(event.detail)
+    const {
+      position,
+      instance
+    } = event.detail;
+    const id = event.currentTarget.id
+    var list = this.data.timeList
+    console.log(id)
     switch (position) {
       case 'cell':
         instance.close();
         break;
       case 'right':
-        // 此处应获取当前项，可能列表的id还要搞一下
-        this.data.timeList.pop()
+        //删除选中项
+        for (var i = 0; i < list.length; i++) {
+          if (id == list[i].id) {
+            list.splice(i, 1)
+            break;
+          }
+        }
+        //更新数据
         this.setData({
-          timeList:this.data.timeList
+          timeList: list
         })
+        // console.log(list)
+        instance.close();
         break;
     }
   },

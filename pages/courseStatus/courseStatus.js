@@ -1,21 +1,11 @@
-// pages/teacher.js
+// pages/courseStatus/courseStatus.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list: [{
-        "icon": "bar-chart-o",
-        "text": "到课率查看",
-        "clickevent": "toCourseStatus"
-      },
-      {
-        "icon": "contact",
-        "text": "我的信息",
-        "clickevent": "toMyStatus"
-      },
-    ]
+
   },
 
   /**
@@ -24,16 +14,7 @@ Page({
   onLoad: function (options) {
 
   },
-  toCourseStatus: function () {
-    wx.navigateTo({
-      url: '../courseStatus/courseStatus'
-    })
-  },
-  toMyStatus: function () {
-    wx.navigateTo({
-      url: '../myStatus/myStatus'
-    })
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

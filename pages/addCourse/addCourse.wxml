@@ -27,6 +27,7 @@
 	 right-width="65"
 	 wx:for="{{ timeList }}"
 	 wx:key="index"
+	 id="{{item.id}}"
 	 async-close
 	 bind:close="onClose"
 	>
@@ -70,8 +71,8 @@
 <van-popup
  show="{{ showTeacher }}"
  position="bottom"
- custom-style="height: 40%;"
  bind:close="onCloseTeacher"
+ custom-style="height:55%"
 >
 	<van-picker
 	 show-toolbar
@@ -86,15 +87,18 @@
 <van-popup
  show="{{ showTime }}"
  position="bottom"
- custom-style="height: 40%;"
+ custom-style="height: 55%;"
  bind:close="onCloseTime"
 >
+
 	<van-picker
 	 show-toolbar
 	 title="选择上课时间"
 	 columns="{{ timeslot }}"
 	 bind:cancel="onCancelTime"
 	 bind:confirm="onConfirmTime"
+	 bind:change="onChangeTime"
 	/>
 </van-popup>
+<van-toast id="van-toast" position="top" />
 

@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"enhance": false,
 		"postcss": true,
@@ -83,6 +83,13 @@
 					"id": -1,
 					"name": "pages/addCourse/addCourse",
 					"pathName": "pages/addCourse/addCourse",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/teacher/teacher",
+					"pathName": "pages/teacher/teacher",
 					"scene": null
 				}
 			]
