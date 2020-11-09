@@ -7,7 +7,7 @@ Page({
   data: {
     list: [{
         "icon": "bar-chart-o",
-        "text": "到课率查看",
+        "text": "到课率",
         "clickevent": "toCourseStatus"
       },
       {

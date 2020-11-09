@@ -5,14 +5,38 @@ Page({
    * 页面的初始数据
    */
   data: {
+    courseStatusList: [{
+      week: '第一周',
+      childs: [{
+        courseName: '这是名字'
+      }, {
+        courseName: '这是名字'
+      }]
 
+    }, {
+      week: '第二周',
+      childs: [{
+        courseName: '这是名字'
+      }, {
+        courseName: '这是名字'
+      }]
+
+    }, {
+      week: '第三周',
+      childs: [{
+        courseName: '这是名字'
+      }, {
+        courseName: '这是名字'
+      }]
+
+    }]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(this.data.courseStatusList)
   },
 
   /**

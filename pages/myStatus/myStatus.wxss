@@ -1,1 +1,17 @@
 /* pages/myStatus/myStatus.wxss */
+.image{
+   /*flex 布局*/
+   display: flex;
+   /*实现垂直居中*/
+   align-items: center;
+   /* 实现水平居中 */
+   justify-content: center;
+   padding: 10px;
+   background-color: white;
+}
+
+.container{
+    height: 100%;
+    padding: 20px;
+    background-color: #2196F3
+}

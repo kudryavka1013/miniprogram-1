@@ -1,2 +1,23 @@
 <!--pages/courseStatus/courseStatus.wxml-->
-<text>pages/courseStatus/courseStatus.wxml</text>
+<page-meta>
+	<navigation-bar title="到课率" />
+</page-meta>
+<view>
+	<van-tabs
+	 animated
+	 swipeable
+	 color="#2196F3"
+	 line-width="50px"
+	>
+		<van-tab
+		 wx:for="{{courseStatusList}}"
+		 wx:key="index"
+		 title="{{item.week}}"
+		>
+			<van-cell wx:for="{{item.childs}}" wx:key="index">
+				{{item.courseName}}
+			</van-cell>
+		</van-tab>
+	</van-tabs>
+</view>
+

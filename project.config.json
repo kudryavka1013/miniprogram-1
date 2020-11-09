@@ -90,6 +90,27 @@
 					"id": -1,
 					"name": "pages/teacher/teacher",
 					"pathName": "pages/teacher/teacher",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/myStatus/myStatus",
+					"pathName": "pages/myStatus/myStatus",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/myStatus/myStatus",
+					"pathName": "pages/myStatus/myStatus",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/courseStatus/courseStatus",
+					"pathName": "pages/courseStatus/courseStatus",
 					"scene": null
 				}
 			]

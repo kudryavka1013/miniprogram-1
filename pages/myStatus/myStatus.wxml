@@ -1,2 +1,25 @@
 <!--pages/myStatus/myStatus.wxml-->
-<text>pages/myStatus/myStatus.wxml</text>
+<view class="container">
+	<view class="image">
+		<van-image
+		 round
+		 use-loading-slot
+		 width="100"
+		 height="100"
+		 fit="cover"
+		 src="https://img.yzcdn.cn/vant/cat.jpeg"
+		/>
+	</view>
+	<van-cell title="认证身份">
+		<van-tag
+		 type="primary"
+		 plain
+		 size="large"
+		>
+			{{identity}}
+		</van-tag>
+	</van-cell>
+	<van-cell title="姓名" value="{{username}}" />
+	<van-cell title="认证号码" value="{{userId}}" />
+</view>
+
