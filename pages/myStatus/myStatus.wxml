@@ -1,4 +1,7 @@
 <!--pages/myStatus/myStatus.wxml-->
+<page-meta>
+	<navigation-bar title="我的信息" />
+</page-meta>
 <view class="container">
 	<view class="image">
 		<van-image

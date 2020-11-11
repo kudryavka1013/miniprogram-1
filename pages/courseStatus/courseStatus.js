@@ -29,6 +29,102 @@ Page({
         courseName: '这是名字'
       }]
 
+    },{
+      week: '第一周',
+      childs: [{
+        courseName: '这是名字'
+      }, {
+        courseName: '这是名字'
+      }]
+
+    }, {
+      week: '第二周',
+      childs: [{
+        courseName: '这是名字'
+      }, {
+        courseName: '这是名字'
+      }]
+
+    }, {
+      week: '第三周',
+      childs: [{
+        courseName: '这是名字'
+      }, {
+        courseName: '这是名字'
+      }]
+
+    },{
+      week: '第一周',
+      childs: [{
+        courseName: '这是名字'
+      }, {
+        courseName: '这是名字'
+      }]
+
+    }, {
+      week: '第二周',
+      childs: [{
+        courseName: '这是名字'
+      }, {
+        courseName: '这是名字'
+      }]
+
+    }, {
+      week: '第三周',
+      childs: [{
+        courseName: '这是名字'
+      }, {
+        courseName: '这是名字'
+      }]
+
+    },{
+      week: '第一周',
+      childs: [{
+        courseName: '这是名字'
+      }, {
+        courseName: '这是名字'
+      }]
+
+    }, {
+      week: '第二周',
+      childs: [{
+        courseName: '这是名字'
+      }, {
+        courseName: '这是名字'
+      }]
+
+    }, {
+      week: '第三周',
+      childs: [{
+        courseName: '这是名字'
+      }, {
+        courseName: '这是名字'
+      }]
+
+    },{
+      week: '第一周',
+      childs: [{
+        courseName: '这是名字'
+      }, {
+        courseName: '这是名字'
+      }]
+
+    }, {
+      week: '第二周',
+      childs: [{
+        courseName: '这是名字'
+      }, {
+        courseName: '这是名字'
+      }]
+
+    }, {
+      week: '第三周',
+      childs: [{
+        courseName: '这是名字'
+      }, {
+        courseName: '这是名字'
+      }]
+
     }]
   },
 
