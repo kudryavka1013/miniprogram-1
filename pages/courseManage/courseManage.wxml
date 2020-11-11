@@ -2,44 +2,28 @@
 <page-meta>
 	<navigation-bar title="课程管理" />
 </page-meta>
+<van-toast id="van-toast" />
 
-<!-- <view class="wrapper">
-	<van-row>
-		<van-col span="12">
-			<view>
-				<span class="class-name">课程名称</span>
-			</view>
-			<view>
-				<span class="class-teacher">任课老师</span>
-			</view>
-		</van-col>
-		<van-col span="12">
-			<view class="time-wrapper">
-				<span class="class-time">上课时间</span>
-			</view>
-		</van-col>
-	</van-row>
-</view> -->
-
-<van-cell-group>
+<van-cell-group
+ wx:for="{{courseList}}"
+ wx:key="index"
+ bind:click="onClick"
+>
 	<van-cell
-	 title="课程名称"
-	 value="上课时间"
-	 label="任课教师"
+	 title="{{item.courseName}}"
+	 label="{{item.courseTeacher}}"
 	 size="large"
 	 border="{{false}}"
 	 clickable
-	/>
-</van-cell-group>
-
-<van-cell-group>
-	<van-cell
-	 title="单元格"
-	 value="内容"
-	 label="描述信息"
-	 size="large"
-	 border="{{false}}"
-	/>
+	>
+		<view
+		 wx:for="{{item.childs}}"
+		 wx:for-item="date"
+		 wx:key="index"
+		>
+			{{date.weekday + ' ' + date.session}}
+		</view>
+	</van-cell>
 </van-cell-group>
 
 <van-button

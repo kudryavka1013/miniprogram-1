@@ -2,6 +2,7 @@
 <page-meta>
 	<navigation-bar title="到课率" />
 </page-meta>
+<van-toast id="van-toast" />
 <view>
 	<van-tabs
 	 animated
@@ -14,8 +15,25 @@
 		 wx:key="index"
 		 title="{{item.week}}"
 		>
-			<van-cell wx:for="{{item.childs}}" wx:key="index">
-				{{item.courseName}}
+			<van-cell
+			 size="large"
+			 center
+			 wx:for="{{item.childs}}"
+			 wx:key="index"
+			 title="{{item.courseName}}"
+			 label="{{item.weekday + ' ' + item.session}}"
+			>
+				<van-tag
+				 type="primary"
+				 plain
+				 size="large"
+				>
+					{{item.actualNumber}}
+				</van-tag>
+				/
+				<van-tag type="primary" size="large">
+					{{item.shouldNumber}}
+				</van-tag>
 			</van-cell>
 		</van-tab>
 	</van-tabs>

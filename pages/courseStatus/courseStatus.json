@@ -3,6 +3,8 @@
     "van-tab": "@vant/weapp/tab/index",
     "van-tabs": "@vant/weapp/tabs/index",
     "van-cell":"@vant/weapp/cell/index",
-    "van-cell-group":"@vant/weapp/cell-group/index"
+    "van-cell-group":"@vant/weapp/cell-group/index",
+    "van-tag":"@vant/weapp/tag/index",
+    "van-toast": "@vant/weapp/toast/index"
   }
 }

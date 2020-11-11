@@ -1,4 +1,5 @@
 // pages/studentManage/studentManage.js
+import Toast from '@vant/weapp/toast/toast';
 Page({
 
   /**
@@ -36,16 +37,16 @@ Page({
     //提交数据
     var newStudent = {
       "studentName": this.data.newStudentName,
-      "studentId":this.data.newStudentId
+      "studentId": this.data.newStudentId
     }
     this.data.studentList.push(newStudent) //替换
     this.setData({
       isNameError: false,
-      isIdError:false,
+      isIdError: false,
       isAddShow: false,
       studentList: this.data.studentList,
       newStudentName: '',
-      newStudentId:''
+      newStudentId: ''
     })
   },
   onNameChange(event) {
@@ -94,6 +95,29 @@ Page({
   },
   loadStudentList: function () {
     //请求后端的数据
+    //加载提示
+    Toast({
+      type: 'loading',
+      message: '加载中',
+      forbidClick: true,
+      loadingType: 'spinner',
+      mask: true,
+      duration: 0,
+    })
+    var that = this
+    //加载教师列表
+    wx.request({
+      method: 'GET',
+      url: 'https://www.fastmock.site/mock/8620899d8291f4be26eff671db045375/web/admin/studentList',
+      success(res) {
+        //绑定数据
+        that.setData({
+          studentList: res.data
+        })
+        //清除加载页
+        Toast.clear()
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

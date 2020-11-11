@@ -32,7 +32,8 @@
 	 bind:close="onClose"
 	>
 		<van-cell title="{{ item.weekday }}" value="{{ item.session }}" />
-		<view slot="right" class="van-swipe-cell-right">删除
+		<view slot="right" class="van-swipe-cell-right">
+			删除
 		</view>
 	</van-swipe-cell>
 </van-cell-group>

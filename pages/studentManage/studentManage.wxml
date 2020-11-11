@@ -2,8 +2,12 @@
 <page-meta>
 	<navigation-bar title="学生管理" />
 </page-meta>
-
-<van-swipe-cell right-width="65" wx:for="{{ studentList }}">
+<van-toast id="van-toast" />
+<van-swipe-cell
+ right-width="65"
+ wx:for="{{ studentList }}"
+ wx:key="index"
+>
 	<van-cell title="{{ item.studentName }}" value="{{ item.studentId }}" />
 	<view slot="right" class="van-swipe-cell-right">删除</view>
 </van-swipe-cell>

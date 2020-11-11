@@ -1,140 +1,46 @@
 // pages/courseStatus/courseStatus.js
+import Toast from '@vant/weapp/toast/toast';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    courseStatusList: [{
-      week: '第一周',
-      childs: [{
-        courseName: '这是名字'
-      }, {
-        courseName: '这是名字'
-      }]
-
-    }, {
-      week: '第二周',
-      childs: [{
-        courseName: '这是名字'
-      }, {
-        courseName: '这是名字'
-      }]
-
-    }, {
-      week: '第三周',
-      childs: [{
-        courseName: '这是名字'
-      }, {
-        courseName: '这是名字'
-      }]
-
-    },{
-      week: '第一周',
-      childs: [{
-        courseName: '这是名字'
-      }, {
-        courseName: '这是名字'
-      }]
-
-    }, {
-      week: '第二周',
-      childs: [{
-        courseName: '这是名字'
-      }, {
-        courseName: '这是名字'
-      }]
-
-    }, {
-      week: '第三周',
-      childs: [{
-        courseName: '这是名字'
-      }, {
-        courseName: '这是名字'
-      }]
-
-    },{
-      week: '第一周',
-      childs: [{
-        courseName: '这是名字'
-      }, {
-        courseName: '这是名字'
-      }]
-
-    }, {
-      week: '第二周',
-      childs: [{
-        courseName: '这是名字'
-      }, {
-        courseName: '这是名字'
-      }]
-
-    }, {
-      week: '第三周',
-      childs: [{
-        courseName: '这是名字'
-      }, {
-        courseName: '这是名字'
-      }]
-
-    },{
-      week: '第一周',
-      childs: [{
-        courseName: '这是名字'
-      }, {
-        courseName: '这是名字'
-      }]
-
-    }, {
-      week: '第二周',
-      childs: [{
-        courseName: '这是名字'
-      }, {
-        courseName: '这是名字'
-      }]
-
-    }, {
-      week: '第三周',
-      childs: [{
-        courseName: '这是名字'
-      }, {
-        courseName: '这是名字'
-      }]
-
-    },{
-      week: '第一周',
-      childs: [{
-        courseName: '这是名字'
-      }, {
-        courseName: '这是名字'
-      }]
-
-    }, {
-      week: '第二周',
-      childs: [{
-        courseName: '这是名字'
-      }, {
-        courseName: '这是名字'
-      }]
-
-    }, {
-      week: '第三周',
-      childs: [{
-        courseName: '这是名字'
-      }, {
-        courseName: '这是名字'
-      }]
-
-    }]
+    courseStatusList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(this.data.courseStatusList)
+    this.loadCourseStatusList()
   },
-
+  
+  loadCourseStatusList: function () {
+    //加载提示
+    Toast({
+      type: 'loading',
+      message: '加载中',
+      forbidClick: true,
+      loadingType: 'spinner',
+      mask: true,
+      duration: 0,
+    })
+    var that = this
+    //请求数据
+    wx.request({
+      method: 'GET',
+      url: 'https://www.fastmock.site/mock/8620899d8291f4be26eff671db045375/web/teacher/courseStatus',
+      success(res) {
+        //绑定数据
+        that.setData({
+          courseStatusList: res.data
+        })
+        //清除加载页
+        Toast.clear()
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

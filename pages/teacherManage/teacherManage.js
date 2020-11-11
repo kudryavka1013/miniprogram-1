@@ -1,4 +1,5 @@
 // pages/teacherManage/teacherManage.js
+import Toast from '@vant/weapp/toast/toast';
 Page({
 
   /**
@@ -8,17 +9,14 @@ Page({
     isAddShow: false,
     isError: false,
     newTeacherName: '',
-    teacherList: [{
-      "teacherName": "testname",
-      "teacherId": "123124",
-    }]
+    teacherList: []
   },
   toAddTeacher: function () {
     this.setData({
       isAddShow: true
     })
   },
-  
+
   onSaveTeacher: function () {
     //数据正确性检查
     if (this.data.newTeacherName == '') {
@@ -31,34 +29,55 @@ Page({
     var newTeacher = {
       "teacherName": this.data.newTeacherName
     }
-    this.data.teacherList.push(newTeacher)//替换
+    this.data.teacherList.push(newTeacher) //替换
     this.setData({
-      isError:false,
+      isError: false,
       isAddShow: false,
       teacherList: this.data.teacherList,
-      newTeacherName:''
+      newTeacherName: ''
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //加载教师列表
     this.loadTeacherList()
 
   },
-
   loadTeacherList: function () {
-    //请求后端的数据
+    //加载提示
+    Toast({
+      type: 'loading',
+      message: '加载中',
+      forbidClick: true,
+      loadingType: 'spinner',
+      mask: true,
+      duration: 0,
+    })
+    var that = this
+    //加载教师列表
+    wx.request({
+      method: 'GET',
+      url: 'https://www.fastmock.site/mock/8620899d8291f4be26eff671db045375/web/admin/teacherList',
+      success(res) {
+        //绑定数据
+        that.setData({
+          teacherList: res.data
+        })
+        //清除加载页
+        Toast.clear()
+      }
+    })
   },
+
   onNameChange(event) {
-    if(event.detail == ''){
+    if (event.detail == '') {
       this.setData({
-        isError:true
+        isError: true
       })
-    }else{
+    } else {
       this.setData({
-        isError:false
+        isError: false
       })
     }
     this.setData({
@@ -67,7 +86,7 @@ Page({
   },
   onClickHide(event) {
     this.setData({
-      isError:false,
+      isError: false,
       isAddShow: false
     })
   },
