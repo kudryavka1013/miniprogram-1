@@ -90,6 +90,34 @@ Page({
       isAddShow: false
     })
   },
+  onClose(event) {
+    console.log(event)
+    // console.log(event.detail)
+    const index = event.currentTarget.dataset.index
+    const teacherToDelete = this.data.teacherList[index]
+    const {
+      position,
+      instance
+    } = event.detail;
+    switch (position) {
+      case 'cell':
+        instance.close();
+        break;
+      case 'right':
+        //删除选中项
+        wx.request({
+          method: 'POST',
+          url: '',
+          data: teacherToDelete,
+          success(res) {
+            //更新数据
+          }
+        })
+        // console.log(list)
+        instance.close();
+        break;
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

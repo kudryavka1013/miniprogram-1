@@ -7,6 +7,9 @@
  right-width="65"
  wx:for="{{ teacherList }}"
  wx:key="index"
+ async-close
+ bind:close="onClose"
+ data-index="{{index}}"
 >
 	<van-cell-group>
 		<van-cell
@@ -15,7 +18,9 @@
 		 value="{{ item.teacherId }}"
 		/>
 	</van-cell-group>
-	<view slot="right" class="van-swipe-cell-right">删除</view>
+	<view slot="right" class="van-swipe-cell-right">
+		删除
+	</view>
 </van-swipe-cell>
 
 <van-overlay show="{{ isAddShow }}">

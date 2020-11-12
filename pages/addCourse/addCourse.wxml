@@ -78,7 +78,7 @@
 	<van-picker
 	 show-toolbar
 	 title="选择任课教师"
-	 columns="{{ teacherList }}"
+	 columns="{{ teacherShowList }}"
 	 bind:cancel="onCancelTeacher"
 	 bind:confirm="onConfirmTeacher"
 	/>

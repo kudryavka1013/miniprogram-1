@@ -21,7 +21,8 @@ Page({
         values: ['1-2节', '3-4节', '5-6节', '7-8节', '9-11节']
       }
     ],
-    teacherList: ['老师1号', '老师2号'],
+    teacherShowList: [],
+    teacherList: [],
     timeList: [],
   },
   /**
@@ -29,15 +30,45 @@ Page({
    */
   onLoad: function (options) {
     // 此处应获取教师列表
+    this.loadTeacherList()
+  },
+  loadTeacherList: function () {
+    //加载提示
+    Toast({
+      type: 'loading',
+      message: '加载中',
+      forbidClick: true,
+      loadingType: 'spinner',
+      mask: true,
+      duration: 0,
+    })
+    var that = this
+    //加载教师列表
     wx.request({
       method: 'GET',
-      url:'https://www.fastmock.site/mock/8620899d8291f4be26eff671db045375/web/admin/teacherList',
-      success (res) {
-        console.log(res.data)
+      url: 'https://www.fastmock.site/mock/8620899d8291f4be26eff671db045375/web/admin/teacherList',
+      success(res) {
+        //绑定数据
+        that.setData({
+          teacherList: res.data
+        })
+        that.changeFormat()
+        //清除加载页
+        Toast.clear()
       }
     })
   },
 
+  changeFormat: function () {
+    var teacherList = this.data.teacherList 
+    var teacherShowList = this.data.teacherShowList
+    for (var i = 0; i < teacherList.length; i++) {
+      teacherShowList.push(teacherList[i].teacherName)
+    }
+    this.setData({
+      teacherShowList: teacherShowList
+    })
+  },
   idIncrease: function () {
     this.setData({
       timeId: this.data.timeId + 1
