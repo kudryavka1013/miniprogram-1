@@ -20,7 +20,7 @@
 <van-cell-group title="">
 	<van-swipe-cell
 	 right-width="65"
-	 wx:for="{{ timeList }}"
+	 wx:for="{{ studentList }}"
 	 wx:key="index"
 	 id="{{item.id}}"
 	 async-close
