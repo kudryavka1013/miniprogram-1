@@ -1,0 +1,35 @@
+<!--pages/bindStudent/bindStudent.wxml-->
+<page-meta>
+	<navigation-bar title="关联学生" />
+</page-meta>
+
+<van-dialog id="van-dialog" />
+
+<van-cell
+ size="large"
+ title="课程名称"
+ value="{{123}}"
+/>
+
+<van-cell
+ size="large"
+ title="任课老师"
+ value="{{}}"
+/>
+
+<van-cell-group title="">
+	<van-swipe-cell
+	 right-width="65"
+	 wx:for="{{ timeList }}"
+	 wx:key="index"
+	 id="{{item.id}}"
+	 async-close
+	 bind:close="onClose"
+	>
+		<van-cell title="{{ item.weekday }}" value="{{ item.session }}" />
+		<view slot="right" class="van-swipe-cell-right">
+			删除
+		</view>
+	</van-swipe-cell>
+</van-cell-group>
+

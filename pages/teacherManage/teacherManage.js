@@ -95,6 +95,7 @@ Page({
     // console.log(event.detail)
     const index = event.currentTarget.dataset.index
     const teacherToDelete = this.data.teacherList[index]
+    var that = this
     const {
       position,
       instance
@@ -111,6 +112,7 @@ Page({
           data: teacherToDelete,
           success(res) {
             //更新数据
+            that.loadTeacherList()
           }
         })
         // console.log(list)

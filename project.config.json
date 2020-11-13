@@ -1,118 +1,125 @@
 {
-  "description": "项目配置文件",
-  "packOptions": {
-    "ignore": []
-  },
-  "setting": {
-    "urlCheck": false,
-    "es6": true,
-    "enhance": false,
-    "postcss": true,
-    "preloadBackgroundData": false,
-    "minified": true,
-    "newFeature": false,
-    "coverView": true,
-    "nodeModules": true,
-    "autoAudits": false,
-    "showShadowRootInWxmlPanel": true,
-    "scopeDataCheck": false,
-    "uglifyFileName": false,
-    "checkInvalidKey": true,
-    "checkSiteMap": true,
-    "uploadWithSourceMap": true,
-    "compileHotReLoad": false,
-    "useMultiFrameRuntime": false,
-    "useApiHook": true,
-    "babelSetting": {
-      "ignore": [],
-      "disablePlugins": [],
-      "outputPath": ""
-    },
-    "useIsolateContext": true,
-    "useCompilerModule": false,
-    "userConfirmedUseCompilerModuleSwitch": false,
-    "packNpmManually": false,
-    "packNpmRelationList": [],
-    "minifyWXSS": true
-  },
-  "compileType": "miniprogram",
-  "libVersion": "2.13.2",
-  "appid": "wx798f8cb75b683d47",
-  "projectname": "Web%E6%9C%8D%E5%8A%A1",
-  "debugOptions": {
-    "hidedInDevtools": []
-  },
-  "scripts": {},
-  "isGameTourist": false,
-  "simulatorType": "wechat",
-  "simulatorPluginLibVersion": {},
-  "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
-      "list": []
-    },
-    "plugin": {
-      "list": []
-    },
-    "game": {
-      "list": []
-    },
-    "gamePlugin": {
-      "list": []
-    },
-    "miniprogram": {
-      "list": [
-        {
-          "id": -1,
-          "name": "pages/courseManage/courseManage",
-          "pathName": "pages/courseManage/courseManage",
-          "query": "",
-          "scene": null
-        },
-        {
-          "id": -1,
-          "name": "pages/teacherManage/teacherManage",
-          "pathName": "pages/teacherManage/teacherManage",
-          "query": "",
-          "scene": null
-        },
-        {
-          "id": -1,
-          "name": "pages/addCourse/addCourse",
-          "pathName": "pages/addCourse/addCourse",
-          "query": "",
-          "scene": null
-        },
-        {
-          "id": -1,
-          "name": "pages/teacher/teacher",
-          "pathName": "pages/teacher/teacher",
-          "query": "",
-          "scene": null
-        },
-        {
-          "id": -1,
-          "name": "pages/myStatus/myStatus",
-          "pathName": "pages/myStatus/myStatus",
-          "query": "",
-          "scene": null
-        },
-        {
-          "id": -1,
-          "name": "pages/myStatus/myStatus",
-          "pathName": "pages/myStatus/myStatus",
-          "query": "",
-          "scene": null
-        },
-        {
-          "id": -1,
-          "name": "pages/courseStatus/courseStatus",
-          "pathName": "pages/courseStatus/courseStatus",
-          "scene": null
-        }
-      ]
-    }
-  }
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"enhance": false,
+		"postcss": true,
+		"preloadBackgroundData": false,
+		"minified": true,
+		"newFeature": false,
+		"coverView": true,
+		"nodeModules": true,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"uglifyFileName": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"compileHotReLoad": false,
+		"useMultiFrameRuntime": false,
+		"useApiHook": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"useIsolateContext": true,
+		"useCompilerModule": false,
+		"userConfirmedUseCompilerModuleSwitch": false,
+		"packNpmManually": false,
+		"packNpmRelationList": [],
+		"minifyWXSS": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.13.2",
+	"appid": "wx798f8cb75b683d47",
+	"projectname": "Web%E6%9C%8D%E5%8A%A1",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"scripts": {},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"list": []
+		},
+		"conversation": {
+			"list": []
+		},
+		"plugin": {
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"gamePlugin": {
+			"list": []
+		},
+		"miniprogram": {
+			"list": [
+				{
+					"id": -1,
+					"name": "pages/courseManage/courseManage",
+					"pathName": "pages/courseManage/courseManage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/teacherManage/teacherManage",
+					"pathName": "pages/teacherManage/teacherManage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/addCourse/addCourse",
+					"pathName": "pages/addCourse/addCourse",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/teacher/teacher",
+					"pathName": "pages/teacher/teacher",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/myStatus/myStatus",
+					"pathName": "pages/myStatus/myStatus",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/myStatus/myStatus",
+					"pathName": "pages/myStatus/myStatus",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/courseStatus/courseStatus",
+					"pathName": "pages/courseStatus/courseStatus",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/bindStudent/bindStudent",
+					"pathName": "pages/bindStudent/bindStudent",
+					"scene": null
+				}
+			]
+		}
+	}
 }

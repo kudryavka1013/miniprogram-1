@@ -37,14 +37,6 @@
 		</view>
 	</van-swipe-cell>
 </van-cell-group>
-<!-- <van-cell-group title="课程时间">
-	<van-cell
-	 title="{{item.weekday}}"
-	 value="{{item.session}}"
-	 wx:for="{{timeList}}"
-	 wx:key="index"
-	/>
-</van-cell-group> -->
 
 <view class="button">
 	<van-button
@@ -78,7 +70,7 @@
 	<van-picker
 	 show-toolbar
 	 title="选择任课教师"
-	 columns="{{ teacherShowList }}"
+	 columns="{{ teacherList }}"
 	 bind:cancel="onCancelTeacher"
 	 bind:confirm="onConfirmTeacher"
 	/>
@@ -98,8 +90,7 @@
 	 columns="{{ timeslot }}"
 	 bind:cancel="onCancelTime"
 	 bind:confirm="onConfirmTime"
-	 bind:change="onChangeTime"
 	/>
 </van-popup>
-<van-toast id="van-toast" position="top" />
+<van-toast id="van-toast" />
 

@@ -8,7 +8,8 @@
     "pages/courseManage/courseManage",
     "pages/myStatus/myStatus",
     "pages/addCourse/addCourse",
-    "pages/courseStatus/courseStatus"
+    "pages/courseStatus/courseStatus",
+    "pages/bindStudent/bindStudent"
   ],
   "window": {
     "backgroundTextStyle": "light",

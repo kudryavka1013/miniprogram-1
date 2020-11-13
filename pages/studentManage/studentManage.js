@@ -94,7 +94,6 @@ Page({
     this.loadStudentList()
   },
   loadStudentList: function () {
-    //请求后端的数据
     //加载提示
     Toast({
       type: 'loading',
@@ -118,6 +117,36 @@ Page({
         Toast.clear()
       }
     })
+  },
+  onClose(event) {
+    console.log(event)
+    // console.log(event.detail)
+    const index = event.currentTarget.dataset.index
+    const studentToDelete = this.data.studentList[index]
+    var that = this
+    const {
+      position,
+      instance
+    } = event.detail;
+    switch (position) {
+      case 'cell':
+        instance.close();
+        break;
+      case 'right':
+        //删除选中项
+        wx.request({
+          method: 'POST',
+          url: '',
+          data: studentToDelete,
+          success(res) {
+            //更新数据
+            that.loadStudentList()
+          }
+        })
+        // console.log(list)
+        instance.close();
+        break;
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
