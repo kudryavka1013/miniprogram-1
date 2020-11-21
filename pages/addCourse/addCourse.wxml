@@ -31,7 +31,7 @@
  clickable
 />
 
-<!-- 开课时间 -->
+<!-- 结课时间 -->
 <van-cell
  size="large"
  title="结课时间"
