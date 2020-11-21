@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    courseStatusList: []
+    courseStatusList: [],
+    active:0
   },
 
   /**
@@ -34,12 +35,17 @@ Page({
       success(res) {
         //绑定数据
         that.setData({
-          courseStatusList: res.data
+          courseStatusList: res.data,
+          active:res.data.length-1
         })
         //清除加载页
         Toast.clear()
       }
     })
+  },
+
+  onChange(event){
+console.log(event)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

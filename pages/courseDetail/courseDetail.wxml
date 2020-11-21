@@ -1,3 +1,56 @@
 <!--pages/courseDetail/courseDetail.wxml-->
-<text>{{id}}</text>
+<page-meta>
+	<navigation-bar title="课程详情" />
+</page-meta>
+<van-toast id="van-toast" />
+<!-- 课程名称 -->
+<van-cell
+ size="large"
+ title="课程名称"
+ value="{{courseName}}"
+ clickable
+/>
 
+<!-- 任课教师 -->
+<van-cell
+ size="large"
+ title="任课教师"
+ value="{{ courseTeacher }}"
+ clickable
+/>
+
+<!-- 上课时间 -->
+<van-cell
+ size="large"
+ title="上课时间"
+ value="{{ courseTime }}"
+ clickable
+/>
+
+<!-- 课程时间段 -->
+<van-cell size="large" title="课程时间段">
+	<view wx:for="{{timeSlotList}}" wx:key="index">
+		{{item.weekday + ' ' + item.session}}
+	</view>
+</van-cell>
+
+<!-- 学生列表循环 -->
+<van-cell-group title="学生列表">
+	<van-cell
+	 wx:for="{{ studentList }}"
+	 wx:key="index"
+	 title="{{ item.studentName }}"
+	 value="{{ item.studentId }}"
+	/>
+</van-cell-group>
+
+<view class="button">
+	<van-button
+	 block
+	 type="danger"
+	 bind:click="onDeleteCourse"
+	>
+		删除课程
+	</van-button>
+</view>
+<van-dialog id="van-dialog" />

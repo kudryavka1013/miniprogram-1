@@ -47,12 +47,6 @@
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
-      "list": []
-    },
     "plugin": {
       "list": []
     },
@@ -117,6 +111,12 @@
           "id": -1,
           "name": "pages/bindStudent/bindStudent",
           "pathName": "pages/bindStudent/bindStudent",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/courseDetail/courseDetail",
+          "pathName": "pages/courseDetail/courseDetail",
           "scene": null
         }
       ]

@@ -3,39 +3,40 @@
 	<navigation-bar title="到课率" />
 </page-meta>
 <van-toast id="van-toast" />
-<view>
-	<van-tabs
-	 animated
-	 swipeable
-	 color="#2196F3"
-	 line-width="50px"
+
+<van-tabs
+ active="{{ active }}"
+ bind:change="onChange"
+ animated
+ swipeable
+ color="#2196F3"
+ line-width="50px"
+>
+	<van-tab
+	 wx:for="{{courseStatusList}}"
+	 wx:key="index"
+	 title="{{item.week}}"
 	>
-		<van-tab
-		 wx:for="{{courseStatusList}}"
+		<van-cell
+		 size="large"
+		 center
+		 wx:for="{{item.childs}}"
 		 wx:key="index"
-		 title="{{item.week}}"
+		 title="{{item.courseName}}"
+		 label="{{item.weekday + ' ' + item.session}}"
 		>
-			<van-cell
+			<van-tag
+			 type="primary"
+			 plain
 			 size="large"
-			 center
-			 wx:for="{{item.childs}}"
-			 wx:key="index"
-			 title="{{item.courseName}}"
-			 label="{{item.weekday + ' ' + item.session}}"
 			>
-				<van-tag
-				 type="primary"
-				 plain
-				 size="large"
-				>
-					{{item.actualNumber}}
-				</van-tag>
-				/
-				<van-tag type="primary" size="large">
-					{{item.shouldNumber}}
-				</van-tag>
-			</van-cell>
-		</van-tab>
-	</van-tabs>
-</view>
+				{{item.actualNumber}}
+			</van-tag>
+			/
+			<van-tag type="primary" size="large">
+				{{item.shouldNumber}}
+			</van-tag>
+		</van-cell>
+	</van-tab>
+</van-tabs>
 
