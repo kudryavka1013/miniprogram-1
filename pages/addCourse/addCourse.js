@@ -9,7 +9,7 @@ Page({
   data: {
     className: '',
     teacherName: '请选择任课教师',
-    showTime: false,
+    showTimeSlot: false,
     showTeacher: false,
     isDisabled: false,
     //id从0开始
@@ -21,6 +21,10 @@ Page({
         values: ['1-2节', '3-4节', '5-6节', '7-8节', '9-11节']
       }
     ],
+    starttime: ['第一周', '第二周', '第三周', '第四周', '第五周', '第六周', '第七周', '第八周', '第九周', '第十周', '第十一周', '第十二周', '十三周', '第十四周', '第十五周', '第十六周', '第十七周', '第十八周', '第十九周', '第二十周'],
+    enttime: ['第一周', '第二周', '第三周', '第四周', '第五周', '第六周', '第七周', '第八周', '第九周', '第十周', '第十一周', '第十二周', '十三周', '第十四周', '第十五周', '第十六周', '第十七周', '第十八周', '第十九周', '第二十周'],
+    startTime: '请选择开课时间',
+    endTime: '请选择结课时间',
     teacherShowList: [],
     teacherList: [],
     timeList: [],
@@ -60,7 +64,7 @@ Page({
   },
 
   changeFormat: function () {
-    var teacherList = this.data.teacherList 
+    var teacherList = this.data.teacherList
     var teacherShowList = this.data.teacherShowList
     for (var i = 0; i < teacherList.length; i++) {
       teacherShowList.push(teacherList[i].teacherName)
@@ -101,18 +105,21 @@ Page({
     })
   },
   onAddTime() {
+
+  },
+  onAddTimeSlot() {
     this.setData({
-      showTime: true
+      showTimeSlot: true
     })
   },
   onCloseTime() {
     this.setData({
-      showTime: false
+      showTimeSlot: false
     })
   },
   onCancelTime() {
     this.setData({
-      showTime: false
+      showTimeSlot: false
     })
   },
 
@@ -140,7 +147,7 @@ Page({
     console.log(this.data.timeList)
     //此处应有整理数组，将列表按时间顺序排好
     this.setData({
-      showTime: false,
+      showTimeSlot: false,
       timeList: this.data.timeList
     })
   },

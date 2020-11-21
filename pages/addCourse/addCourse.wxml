@@ -21,8 +21,27 @@
  bind:click="onAddTeacher"
  clickable
 />
+
+<!-- 开课时间 -->
+<van-cell
+ size="large"
+ title="开课时间"
+ value="{{startTime}}"
+ bind:click="onAddStartTime"
+ clickable
+/>
+
+<!-- 开课时间 -->
+<van-cell
+ size="large"
+ title="结课时间"
+ value="{{endTime}}"
+ bind:click="onAddEndTime"
+ clickable
+/>
+
 <!-- 时间段列表循环 -->
-<van-cell-group title="课程时间">
+<van-cell-group title="课程时间段">
 	<van-swipe-cell
 	 right-width="65"
 	 wx:for="{{ timeList }}"
@@ -44,9 +63,38 @@
 	 plain
 	 type="info"
 	 icon="plus"
-	 bind:click="onAddTime"
+	 bind:click="onAddTimeSlot"
 	>
 		添加时间段
+	</van-button>
+</view>
+
+<!-- 学生列表循环 -->
+<van-cell-group title="学生列表">
+	<van-swipe-cell
+	 right-width="65"
+	 wx:for="{{ studentList }}"
+	 wx:key="index"
+	 id="{{item.id}}"
+	 async-close
+	 bind:close="onClose"
+	>
+		<van-cell title="{{ item.studentName }}" value="{{ item.studentId }}" />
+		<view slot="right" class="van-swipe-cell-right">
+			删除
+		</view>
+	</van-swipe-cell>
+</van-cell-group>
+
+<view class="button">
+	<van-button
+	 block
+	 plain
+	 type="info"
+	 icon="plus"
+	 bind:click="onAddStudent"
+	>
+		添加学生
 	</van-button>
 </view>
 
@@ -76,9 +124,41 @@
 	/>
 </van-popup>
 
-<!-- 弹出层：选择上课时间 -->
+<!-- 弹出层：选择开课时间 -->
 <van-popup
- show="{{ showTime }}"
+ show="{{ showStartTime }}"
+ position="bottom"
+ bind:close="onCloseStartTime"
+ custom-style="height:55%"
+>
+	<van-picker
+	 show-toolbar
+	 title="选择任课教师"
+	 columns="{{ starttime }}"
+	 bind:cancel="onCancelStartTime"
+	 bind:confirm="onConfirmStartTime"
+	/>
+</van-popup>
+
+<!-- 弹出层：选择结课时间 -->
+<van-popup
+ show="{{ showEndTime }}"
+ position="bottom"
+ bind:close="onCloseEndTime"
+ custom-style="height:55%"
+>
+	<van-picker
+	 show-toolbar
+	 title="选择任课教师"
+	 columns="{{ endtime }}"
+	 bind:cancel="onCancelEndTime"
+	 bind:confirm="onConfirmEndTime"
+	/>
+</van-popup>
+
+<!-- 弹出层：选择上课时间段 -->
+<van-popup
+ show="{{ showTimeSlot }}"
  position="bottom"
  custom-style="height: 55%;"
  bind:close="onCloseTime"
