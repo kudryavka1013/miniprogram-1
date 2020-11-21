@@ -9,7 +9,7 @@
     "pages/myStatus/myStatus",
     "pages/addCourse/addCourse",
     "pages/courseStatus/courseStatus",
-    "pages/bindStudent/bindStudent"
+    "pages/courseDetail/courseDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

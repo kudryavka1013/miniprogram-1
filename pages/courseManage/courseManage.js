@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    courseList:[]
+    courseList: []
   },
 
   /**
@@ -46,6 +46,14 @@ Page({
     })
   },
 
+  onClick: function (event) {
+    console.log(event)
+    const id = event.currentTarget.dataset.item
+    console.log(id)
+    wx.navigateTo({
+      url: '../courseDetail/courseDetail?id=' + id
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

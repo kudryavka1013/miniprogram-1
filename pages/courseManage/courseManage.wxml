@@ -4,18 +4,19 @@
 </page-meta>
 <van-toast id="van-toast" />
 
-<van-cell-group
- wx:for="{{courseList}}"
- wx:key="index"
- bind:click="onClick"
->
+<van-cell-group wx:for="{{courseList}}" wx:key="index">
 	<van-cell
 	 title="{{item.courseName}}"
 	 label="{{item.courseTeacher}}"
 	 size="large"
 	 border="{{false}}"
 	 clickable
+	 bind:click="onClick"
+	 data-item="{{item.courseId}}"
 	>
+		<view>
+			{{item.startTime + ' 至 ' + item.endTime}}
+		</view>
 		<view
 		 wx:for="{{item.childs}}"
 		 wx:for-item="date"

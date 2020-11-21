@@ -1,0 +1,3 @@
+<!--pages/courseDetail/courseDetail.wxml-->
+<text>{{id}}</text>
+
