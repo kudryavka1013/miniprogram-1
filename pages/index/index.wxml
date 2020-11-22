@@ -1,5 +1,20 @@
 <!--index.wxml-->
-<view class="container">
-  <van-button block type="info" bind:click="toAdmin" class="button">教务员入口</van-button>
-  <van-button block type="info" bind:click="toTeacher" class="button">教师入口</van-button>
+
+<view class="contentWrapper" wx:if="{{isLogin}}">
+	<text class="tips">您尚未认证学生或老师身份</text>
+	<van-field placeholder="请输入学号/工号" />
+	<van-button
+	 type="default"
+	 block
+	 color="#1a89fa"
+	>认证
+	</van-button>
 </view>
+<view class="loadingWrapper" wx:if="{{!isLogin}}">
+	<van-loading color="#1989fa" type="spinner" wx:if="{{!isAuthenticated}}">正在登陆中</van-loading>
+	<van-empty
+	 description="登陆成功，正在跳转"
+	 wx:if="{{isAuthenticated}}"
+	/>
+</view>
+

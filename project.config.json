@@ -117,6 +117,12 @@
         {
           "name": "pages/courseDetail/courseDetail",
           "pathName": "pages/courseDetail/courseDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
           "scene": null
         }
       ]

@@ -1,7 +1,27 @@
-.container{
-  padding: 10px;
+
+.tips {
+  display: block;
+  text-align: center;
+  font-size: 22px;
 }
 
-.button{
-  margin: 10px;
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: stretch;
+  height: 100%;
+  padding: 50rpx;
+}
+
+page {
+  height: 100%;
+}
+
+.loadingWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
