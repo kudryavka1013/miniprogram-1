@@ -4,9 +4,23 @@ const app = getApp()
 
 Page({
   data: {
-    isLogin: false,
+    isLogin: true,
     userInfo: null,
-    isAuthenticated: false
+    isAuthenticated: false,
+    identity: '教师',
+    id:'',
+  },
+
+  onIdentityChange: function (event) {
+    this.setData({
+      identity: event.detail
+    })
+  },
+
+  onIdChange:function(event){
+    this.setData({
+      id:event.detail
+    })
   },
 
   toAdmin: function () {
@@ -68,6 +82,16 @@ Page({
     })
   },
 
+  onAuthenticate:function(){
+    wx.request({
+      url:'',
+      method:POST,
+      data:{
+        identity:'',
+        id:''
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

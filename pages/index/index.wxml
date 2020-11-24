@@ -2,19 +2,37 @@
 
 <view class="contentWrapper" wx:if="{{isLogin}}">
 	<text class="tips">您尚未认证学生或老师身份</text>
-	<van-field placeholder="请输入学号/工号" />
+	<view>
+		<van-field
+		 value="{{ id }}"
+		 placeholder="请输入学号/工号"
+		 bind:change="onIdChange"
+		/>
+		<van-radio-group
+		 class="radio"
+		 value="{{ identity }}"
+		 bind:change="onIdentityChange"
+		>
+			<van-radio name="教师">教师</van-radio>
+			<van-radio name="教务员">教务员</van-radio>
+		</van-radio-group>
+	</view>
+
 	<van-button
 	 type="default"
 	 block
 	 color="#1a89fa"
+	 bind:click="onAuthenticate"
 	>认证
 	</van-button>
 </view>
 <view class="loadingWrapper" wx:if="{{!isLogin}}">
-	<van-loading color="#1989fa" type="spinner" wx:if="{{!isAuthenticated}}">正在登陆中</van-loading>
-	<van-empty
-	 description="登陆成功，正在跳转"
-	 wx:if="{{isAuthenticated}}"
-	/>
+	<van-loading
+	 color="#1989fa"
+	 type="spinner"
+	 wx:if="{{!isAuthenticated}}"
+	>正在登陆中
+	</van-loading>
+	<van-empty description="登陆成功，正在跳转" wx:if="{{isAuthenticated}}" />
 </view>
 

@@ -5,6 +5,9 @@
   font-size: 22px;
 }
 
+.radio{
+  margin: 5px;
+}
 .contentWrapper {
   display: flex;
   flex-direction: column;
