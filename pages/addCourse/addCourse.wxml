@@ -9,9 +9,9 @@
  size="large"
  label="课程名称"
  input-align="right"
- value="{{className}}"
+ value="{{courseName}}"
  placeholder="请输入课程名称"
- bind:change="onClassNameChange"
+ bind:change="onCourseNameChange"
 />
 <!-- 任课教师 -->
 <van-cell

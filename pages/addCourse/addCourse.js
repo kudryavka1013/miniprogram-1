@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    className: '',
+    courseName: '',
     teacherName: '请选择任课教师',
     courseTime: '请选择上课时间',
     startTime: '',
@@ -142,6 +142,11 @@ Page({
     })
   },
 
+  onCourseNameChange(event){
+    this.setData({
+      courseName:event.detail
+    })
+  },
   //添加任课老师的控制
   onAddTeacher() {
     this.setData({

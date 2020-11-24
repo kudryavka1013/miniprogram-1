@@ -123,6 +123,12 @@
         {
           "name": "pages/index/index",
           "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/studentManage/studentManage",
+          "pathName": "pages/studentManage/studentManage",
           "scene": null
         }
       ]
