@@ -5,7 +5,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    active:0,
     list:[
       {
         "icon":"manager-o",
@@ -28,10 +27,6 @@ Page({
         "clickevent":"toMyStatus"
       },
     ]
-  },
-  onChange(event){
-    this.setData({active:event.detail})
-    //改变页面
   },
 
   toTeacherManage:function(){

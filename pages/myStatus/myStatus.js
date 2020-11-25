@@ -1,6 +1,6 @@
 // pages/myStatus/myStatus.js
+const app = getApp()
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -15,9 +15,9 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      identity:'教务员',
-      username:'名字',
-      userId:'ID'
+      identity: app.globalData.userInfo.type,
+      username: app.globalData.userInfo.name,
+      userId: app.globalData.userInfo.id
     })
   },
 

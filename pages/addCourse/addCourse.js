@@ -1,5 +1,6 @@
 // pages/addCourse/addCourse.js
 import Toast from '@vant/weapp/toast/toast';
+import Dialog from '@vant/weapp/dialog/dialog';
 
 Page({
 
@@ -7,11 +8,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    courseName: '',
+    courseName: null,
     teacherName: '请选择任课教师',
+    teacherId: null,
     courseTime: '请选择上课时间',
-    startTime: '',
-    endTime: '',
+    startTime: null,
+    endTime: null,
 
     showTeacher: false,
     showCourseTime: false,
@@ -142,9 +144,9 @@ Page({
     })
   },
 
-  onCourseNameChange(event){
+  onCourseNameChange(event) {
     this.setData({
-      courseName:event.detail
+      courseName: event.detail
     })
   },
   //添加任课老师的控制
@@ -167,11 +169,14 @@ Page({
     })
   },
   onConfirmTeacher(event) {
+    var index = event.detail.index
     this.setData({
       teacherName: event.detail.value,
+      teacherId: this.data.teacherList[index].teacherId,
       isDisabled: false,
       showTeacher: false,
     })
+    console.log(this.data.teacherId)
   },
 
   //选择上课时间的控制
@@ -207,7 +212,7 @@ Page({
     }
     this.setData({
       startTime: event.detail.value[0],
-      entTime: event.detail.value[1],
+      endTime: event.detail.value[1],
       courseTime: event.detail.value[0] + ' 至 ' + event.detail.value[1],
       showCourseTime: false,
       isDisabled: false
@@ -363,14 +368,96 @@ Page({
         }
         //更新数据
         this.setData({
-          studentToSaveList:list
+          studentToSaveList: list
         })
         instance.close()
         break
     }
   },
 
+  onSaveCourse: function () {
+    //判断课程名
+    if (this.data.courseName == null) {
+      console.log("courseNameError")
+      Toast({
+        type: 'fail',
+        message: '课程名有误'
+      });
+      return
+    }
+    //判断教师
+    if (this.data.teacherId == null) {
+      console.log("teacherError")
+      Toast({
+        type: 'fail',
+        message: '任课教师有误'
+      });
+      return
+    }
+    //判断上课时间
+    if (this.data.startTime == null) {
+      console.log("startTimeError")
+      Toast({
+        type: 'fail',
+        message: '上课时间有误'
+      });
+      return
+    }
+    //判断课程时间端
+    if (this.data.timeSlotList.length == 0) {
+      console.log("endTimeError")
+      Toast({
+        type: 'fail',
+        message: '课程时间段有误'
+      });
+      return
+    }
+    //判断学生列表
+    if (this.data.studentToSaveList.length == 0) {
+      console.log("studentListError")
+      Toast({
+        type: 'fail',
+        message: '学生列表有误'
+      });
+      return
+    }
+    var studentList = new Array()
+    for (var i = 0; i < this.data.studentToSaveList.length; i++) {
+      studentList.push(this.data.studentToSaveList[i].studentId)
+    }
+    var newCourse = {
+      courseName: this.data.courseName,
+      teacherId: this.data.teacherId,
+      startTime: this.data.startTime,
+      endTime: this.data.endTime,
+      timeSlotList: this.data.timeSlotList,
+      studentList: studentList
+    }
+    console.log(newCourse)
+    Dialog.confirm({
+        title: '确认',
+        message: '确定要添加课程吗？',
+        asyncClose: true
+      })
+      .then(() => {
+        wx.request({
+          url: '',
+          type: 'POST',
+          data: newCourse,
+          success(res) {
+            console.log(res.data)
+            Dialog.close()
+          }
+        })
+        setTimeout(() => {
+          Dialog.close();
+        }, 1000);
+      })
+      .catch(() => {
+        Dialog.close();
+      });
 
+  },
 
 
 

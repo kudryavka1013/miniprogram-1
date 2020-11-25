@@ -64,6 +64,14 @@ Page({
       asyncClose: true
     })
       .then(() => {
+        wx.request({
+          url:'',
+          type:'POST',
+          data:this.data.courseId,
+          success(res){
+            console.log(res.data)
+          }
+        })
         setTimeout(() => {
           Dialog.close();
         }, 1000);

@@ -1,5 +1,7 @@
 // pages/studentManage/studentManage.js
 import Toast from '@vant/weapp/toast/toast';
+import Dialog from '@vant/weapp/dialog/dialog';
+
 Page({
 
   /**
@@ -39,7 +41,23 @@ Page({
       "studentName": this.data.newStudentName,
       "studentId": this.data.newStudentId
     }
-    this.data.studentList.push(newStudent) //替换
+    Toast({
+      type: 'loading',
+      message: '加载中',
+      forbidClick: true,
+      loadingType: 'spinner',
+      mask: true,
+      duration: 0,
+    })
+    wx.request({
+      url: '',
+      type: 'POST',
+      data: newStudent,
+      success(res) {
+        console.log(res.data)
+        Toast.clear()
+      }
+    })
     this.setData({
       isNameError: false,
       isIdError: false,
@@ -118,11 +136,11 @@ Page({
       }
     })
   },
-  onClose(event) {
+  onClose: function (event) {
     console.log(event)
     // console.log(event.detail)
-    const index = event.currentTarget.dataset.index
-    const studentToDelete = this.data.studentList[index]
+    var index = event.currentTarget.dataset.index
+    var studentToDelete = this.data.studentList[index]
     var that = this
     const {
       position,
@@ -133,6 +151,15 @@ Page({
         instance.close();
         break;
       case 'right':
+        //加载提示
+        Toast({
+          type: 'loading',
+          message: '加载中',
+          forbidClick: true,
+          loadingType: 'spinner',
+          mask: true,
+          duration: 0,
+        })
         //删除选中项
         wx.request({
           method: 'POST',
@@ -143,6 +170,7 @@ Page({
             that.loadStudentList()
           }
         })
+        Toast.clear()
         // console.log(list)
         instance.close();
         break;

@@ -56,3 +56,5 @@
 >添加
 </van-button>
 
+<van-dialog id="van-dialog" />
+
