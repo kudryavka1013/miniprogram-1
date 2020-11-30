@@ -1,20 +1,12 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
 Page({
   data: {
-    isLogin: true,
+    isLogin: false,
     userInfo: null,
     isAuthenticated: false,
-    identity: '教师',
     id:'',
-  },
-
-  onIdentityChange: function (event) {
-    this.setData({
-      identity: event.detail
-    })
   },
 
   onIdChange:function(event){
@@ -35,6 +27,7 @@ Page({
   },
 
   login: function () {
+    console.log('start login')
     var that = this
     // 调用接口获取登录凭证
     wx.login({
@@ -43,12 +36,13 @@ Page({
         if (loginRes.code) {
           //发送code到后端验证身份
           wx.request({
-            url: 'https://test.com/onLogin',
+            url: app.globalData.domain + 'wxlogin',
             method: 'POST',
             data: {
               code: loginRes.code
             },
             success: (res) => {
+              console.log("request success")
               console.log(res)
               that.setData({
                 userInfo: res.data
@@ -63,6 +57,7 @@ Page({
                   console.log(e)
                 }
                 app.globalData.userInfo = userInfo
+                console.log(userInfo)
                 // 提示重新打开小程序
                 that.setData({
                   isAuthenticated: true
@@ -83,12 +78,27 @@ Page({
   },
 
   onAuthenticate:function(){
+    console.log("click")
     wx.request({
-      url:'',
-      method:POST,
+      url: app.globalData.domain + 'identify',
+      method:'POST',
       data:{
-        identity:'',
-        id:''
+        id:this.data.id,
+        open_id:this.data.userInfo.open_id
+      },
+      success(res){
+        console.log("identify")
+        console.log(res)
+        wx.setStorage({
+          data: res.data,
+          key: 'loginInfo',
+          success(res) {
+            // 提示重新打开小程序
+            that.setData({
+              isAuthenticated: true
+            })
+          }
+        })
       }
     })
   },
@@ -97,7 +107,12 @@ Page({
    */
   onReady: function () {
     if (app.globalData.userInfo == null) {
+      console.log("onReady")
       this.login()
     }
   },
+
+  onShow:function(){
+    wx.hideHomeButton()
+  }
 })

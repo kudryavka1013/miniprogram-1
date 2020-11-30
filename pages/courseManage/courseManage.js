@@ -1,5 +1,6 @@
 // pages/courseManage/courseManage.js
 import Toast from '@vant/weapp/toast/toast';
+const app = getApp()
 Page({
 
   /**
@@ -29,11 +30,12 @@ Page({
     //请求数据
     wx.request({
       method: 'GET',
-      url: 'https://www.fastmock.site/mock/8620899d8291f4be26eff671db045375/web/admin/courseList',
+      url: app.globalData.domain + 'getCourseInfo',
       success(res) {
+        console.log(res)
         //绑定数据
         that.setData({
-          courseList: res.data
+          courseList: res.data.CourseData
         })
         //清除加载页
         Toast.clear()
@@ -49,7 +51,7 @@ Page({
   onClick: function (event) {
     console.log(event)
     const id = event.currentTarget.dataset.item
-    console.log(id)
+    // console.log(id)
     wx.navigateTo({
       url: '../courseDetail/courseDetail?id=' + id
     })
@@ -65,7 +67,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.loadCourseList()
   },
 
   /**

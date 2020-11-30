@@ -9,7 +9,6 @@
 	 title="{{item.courseName}}"
 	 label="{{item.courseTeacher}}"
 	 size="large"
-	 border="{{false}}"
 	 clickable
 	 bind:click="onClick"
 	 data-item="{{item.courseId}}"

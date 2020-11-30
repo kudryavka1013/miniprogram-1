@@ -1,7 +1,7 @@
 // pages/studentManage/studentManage.js
 import Toast from '@vant/weapp/toast/toast';
 import Dialog from '@vant/weapp/dialog/dialog';
-
+const app = getApp()
 Page({
 
   /**
@@ -41,30 +41,25 @@ Page({
       "studentName": this.data.newStudentName,
       "studentId": this.data.newStudentId
     }
-    Toast({
-      type: 'loading',
-      message: '加载中',
-      forbidClick: true,
-      loadingType: 'spinner',
-      mask: true,
-      duration: 0,
-    })
+    var that = this
     wx.request({
-      url: '',
-      type: 'POST',
+      url: app.globalData.domain + 'addStudentInfo',
+      method: 'POST',
       data: newStudent,
       success(res) {
-        console.log(res.data)
-        Toast.clear()
+        console.log(res)
+        setTimeout(() => {
+          that.setData({
+            isNameError: false,
+            isIdError: false,
+            isAddShow: false,
+            studentList: that.data.studentList,
+            newStudentName: '',
+            newStudentId: ''
+          })
+          that.loadStudentList()
+        }, 300);
       }
-    })
-    this.setData({
-      isNameError: false,
-      isIdError: false,
-      isAddShow: false,
-      studentList: this.data.studentList,
-      newStudentName: '',
-      newStudentId: ''
     })
   },
   onNameChange(event) {
@@ -122,14 +117,15 @@ Page({
       duration: 0,
     })
     var that = this
-    //加载教师列表
+    //加载学生列表
     wx.request({
       method: 'GET',
-      url: 'https://www.fastmock.site/mock/8620899d8291f4be26eff671db045375/web/admin/studentList',
+      url: app.globalData.domain + 'getStudentInfo',
       success(res) {
+        console.log(res.data)
         //绑定数据
         that.setData({
-          studentList: res.data
+          studentList: res.data.studentList
         })
         //清除加载页
         Toast.clear()
@@ -163,7 +159,7 @@ Page({
         //删除选中项
         wx.request({
           method: 'POST',
-          url: '',
+          url: app.globalData.domain + 'deleteStudentInfo',
           data: studentToDelete,
           success(res) {
             //更新数据

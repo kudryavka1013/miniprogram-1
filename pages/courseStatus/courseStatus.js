@@ -1,5 +1,7 @@
 // pages/courseStatus/courseStatus.js
 import Toast from '@vant/weapp/toast/toast';
+const app = getApp()
+
 Page({
 
   /**
@@ -7,7 +9,7 @@ Page({
    */
   data: {
     courseStatusList: [],
-    active:0
+    active: 0
   },
 
   /**
@@ -16,7 +18,7 @@ Page({
   onLoad: function (options) {
     this.loadCourseStatusList()
   },
-  
+
   loadCourseStatusList: function () {
     //加载提示
     Toast({
@@ -28,15 +30,21 @@ Page({
       duration: 0,
     })
     var that = this
+    // var id =  app.globalData.userInfo.id
     //请求数据
     wx.request({
       method: 'GET',
-      url: 'https://www.fastmock.site/mock/8620899d8291f4be26eff671db045375/web/teacher/courseStatus',
+      url: app.globalData.domain +'getAttendanceRate',
+      // url: 'https://www.fastmock.site/mock/8620899d8291f4be26eff671db045375/web/teacher/courseStatus',
+      data: {
+        teacherId: '9999'
+      },
       success(res) {
+        console.log(res)
         //绑定数据
         that.setData({
-          courseStatusList: res.data,
-          active:res.data.length-1
+          courseStatusList: res.data.data,
+          active: res.data.data.length - 1
         })
         //清除加载页
         Toast.clear()
@@ -44,8 +52,8 @@ Page({
     })
   },
 
-  onChange(event){
-console.log(event)
+  onChange(event) {
+    console.log(event)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

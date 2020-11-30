@@ -1,21 +1,13 @@
 <!--index.wxml-->
 
 <view class="contentWrapper" wx:if="{{isLogin}}">
-	<text class="tips">您尚未认证学生或老师身份</text>
+	<text class="tips">您尚未认证老师身份</text>
 	<view>
 		<van-field
 		 value="{{ id }}"
-		 placeholder="请输入学号/工号"
+		 placeholder="请输入工号"
 		 bind:change="onIdChange"
 		/>
-		<van-radio-group
-		 class="radio"
-		 value="{{ identity }}"
-		 bind:change="onIdentityChange"
-		>
-			<van-radio name="教师">教师</van-radio>
-			<van-radio name="教务员">教务员</van-radio>
-		</van-radio-group>
 	</view>
 
 	<van-button
@@ -31,8 +23,8 @@
 	 color="#1989fa"
 	 type="spinner"
 	 wx:if="{{!isAuthenticated}}"
-	>正在登陆中
+	>正在登录中
 	</van-loading>
-	<van-empty description="登陆成功，正在跳转" wx:if="{{isAuthenticated}}" />
+	<van-empty description="登录成功，请重新打开小程序" wx:if="{{isAuthenticated}}" />
 </view>
 

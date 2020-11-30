@@ -1,7 +1,7 @@
 // pages/addCourse/addCourse.js
 import Toast from '@vant/weapp/toast/toast';
 import Dialog from '@vant/weapp/dialog/dialog';
-
+const app = getApp()
 Page({
 
   /**
@@ -33,7 +33,7 @@ Page({
         values: ['周一', '周二', '周三', '周四', '周五'],
       },
       {
-        values: ['1-2节', '3-4节', '5-6节', '7-8节', '9-11节']
+        values: ['1-2节', '3-4节', '5-6节', '7-8节']
       }
     ],
     //开课时间和结课时间列表内容
@@ -55,8 +55,11 @@ Page({
   onLoad: function (options) {
     // 此处应获取教师列表
     this.loadTeacherList()
+
     // 此处应获取学生列表
     this.loadStudentList()
+
+
   },
   loadTeacherList: function () {
     //加载提示
@@ -72,11 +75,13 @@ Page({
     //加载教师列表
     wx.request({
       method: 'GET',
-      url: 'https://www.fastmock.site/mock/8620899d8291f4be26eff671db045375/web/admin/teacherList',
+      url: app.globalData.domain + 'getTeacherInfo',
       success(res) {
+        console.log("TeacherGot")
+        console.log(res)
         //绑定数据
         that.setData({
-          teacherList: res.data
+          teacherList: res.data.teacherList
         })
         that.changeTeacherFormat()
         //清除加载页
@@ -99,11 +104,13 @@ Page({
     //加载学生列表
     wx.request({
       method: 'GET',
-      url: 'https://www.fastmock.site/mock/8620899d8291f4be26eff671db045375/web/admin/studentList',
+      url: app.globalData.domain + 'getStudentInfo',
       success(res) {
+        console.log("studentGot")
+        console.log(res)
         //绑定数据
         that.setData({
-          studentList: res.data
+          studentList: res.data.studentList
         })
         that.changeStduentFormat()
         //清除加载页
@@ -211,12 +218,14 @@ Page({
       return
     }
     this.setData({
-      startTime: event.detail.value[0],
-      endTime: event.detail.value[1],
+      startTime: event.detail.index[0] + 1,
+      endTime: event.detail.index[1] + 1,
       courseTime: event.detail.value[0] + ' 至 ' + event.detail.value[1],
       showCourseTime: false,
       isDisabled: false
     })
+    // console.log(this.data.startTime)
+    // console.log(this.data.endTime)
   },
 
   //添加时间段的控制
@@ -423,7 +432,10 @@ Page({
     }
     var studentList = new Array()
     for (var i = 0; i < this.data.studentToSaveList.length; i++) {
-      studentList.push(this.data.studentToSaveList[i].studentId)
+      var temp = {
+        studentId: this.data.studentToSaveList[i].studentId
+      }
+      studentList.push(temp)
     }
     var newCourse = {
       courseName: this.data.courseName,
@@ -441,17 +453,21 @@ Page({
       })
       .then(() => {
         wx.request({
-          url: '',
-          type: 'POST',
+          url: app.globalData.domain + 'addCourseInfo',
+          method: 'POST',
           data: newCourse,
           success(res) {
-            console.log(res.data)
+            console.log(res)
             Dialog.close()
+            Toast.success("添加成功")
+            setTimeout(() => {
+              wx.navigateBack({
+                delta: 1,
+              })
+            }, 1000)
           }
         })
-        setTimeout(() => {
-          Dialog.close();
-        }, 1000);
+
       })
       .catch(() => {
         Dialog.close();

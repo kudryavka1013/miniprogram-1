@@ -5,17 +5,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-    identity:'',
-    username:'',
-    userId:''
+    identity: '',
+    username: '',
+    userId: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    switch (app.globalData.userInfo.type) {
+      case 'admin':
+        this.setData({
+          identity: '管理员'
+        })
+        break
+      case 'teacher':
+        this.setData({
+          identity: '教师'
+        })
+        break
+    }
     this.setData({
-      identity: app.globalData.userInfo.type,
       username: app.globalData.userInfo.name,
       userId: app.globalData.userInfo.id
     })

@@ -1,7 +1,7 @@
 // pages/teacherManage/teacherManage.js
 import Toast from '@vant/weapp/toast/toast';
 import Dialog from '@vant/weapp/dialog/dialog';
-
+const app = getApp()
 Page({
 
   /**
@@ -13,6 +13,7 @@ Page({
     newTeacherName: '',
     teacherList: []
   },
+
   toAddTeacher: function () {
     this.setData({
       isAddShow: true
@@ -28,39 +29,39 @@ Page({
       return
     }
     //提交数据
+    var that = this
     var newTeacher = {
-      "teacherName": this.data.newTeacherName
+      teacherName: that.data.newTeacherName
     }
-    Toast({
-      type: 'loading',
-      message: '加载中',
-      forbidClick: true,
-      loadingType: 'spinner',
-      mask: true,
-      duration: 0,
-    })
     wx.request({
-      url: '',
-      type: 'POST',
+      url: app.globalData.domain + 'addTeacherInfo',
+      method: 'POST',
       data: newTeacher,
       success(res) {
-        console.log(res.data)
-        Toast.clear()
+        console.log(newTeacher)
+        console.log(res)
+        if (res.data.code == 403) {
+          Toast.fail("添加失败")
+        } else {
+          setTimeout(() => {
+            that.setData({
+              isError: false,
+              isAddShow: false,
+              teacherList: that.data.teacherList,
+              newTeacherName: ''
+            })
+            that.loadTeacherList()
+          }, 300);
+        }
       }
     })
-    this.setData({
-      isError: false,
-      isAddShow: false,
-      teacherList: this.data.teacherList,
-      newTeacherName: ''
-    })
+
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.loadTeacherList()
-
   },
   loadTeacherList: function () {
     //加载提示
@@ -76,11 +77,12 @@ Page({
     //加载教师列表
     wx.request({
       method: 'GET',
-      url: 'https://www.fastmock.site/mock/8620899d8291f4be26eff671db045375/web/admin/teacherList',
+      url: app.globalData.domain + 'getTeacherInfo',
       success(res) {
+        console.log(res.data)
         //绑定数据
         that.setData({
-          teacherList: res.data
+          teacherList: res.data.teacherList
         })
         //清除加载页
         Toast.clear()
@@ -108,11 +110,12 @@ Page({
       isAddShow: false
     })
   },
-  onClose:function(event) {
+  onClose: function (event) {
     console.log(event)
     // console.log(event.detail)
     var index = event.currentTarget.dataset.index
-    var teacherToDelete = this.data.teacherList[index]
+    var teacherToDelete = this.data.teacherList[index].teacherId
+    console.log(teacherToDelete)
     var that = this
     const {
       position,
@@ -134,13 +137,22 @@ Page({
         })
         wx.request({
           method: 'POST',
-          url: '',
-          data: teacherToDelete,
+          url: app.globalData.domain + 'deleteTeacherInfo',
+          data: {
+            teacherId: teacherToDelete
+          },
           success(res) {
-            //更新数据
-            that.loadTeacherList()
+            Toast.clear()
+            console.log(res)
+            if (res.data.code == 403) {
+              Toast.fail('删除失败');
+            } else {
+              Toast.success('删除成功');
+              //更新数据
+              that.loadTeacherList()
+            }
           }
-        })      
+        })
         // console.log(list)
         Toast.clear()
         instance.close();
