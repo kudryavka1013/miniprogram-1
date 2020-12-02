@@ -30,14 +30,14 @@ Page({
       duration: 0,
     })
     var that = this
-    // var id =  app.globalData.userInfo.id
+    var id =  app.globalData.userInfo.id
     //请求数据
     wx.request({
       method: 'GET',
       url: app.globalData.domain +'getAttendanceRate',
       // url: 'https://www.fastmock.site/mock/8620899d8291f4be26eff671db045375/web/teacher/courseStatus',
       data: {
-        teacherId: '9999'
+        teacherId: id
       },
       success(res) {
         console.log(res)

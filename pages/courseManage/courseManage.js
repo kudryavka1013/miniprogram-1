@@ -17,15 +17,7 @@ Page({
     this.loadCourseList()
   },
   loadCourseList: function () {
-    //加载提示
-    Toast({
-      type: 'loading',
-      message: '加载中',
-      forbidClick: true,
-      loadingType: 'spinner',
-      mask: true,
-      duration: 0,
-    })
+
     var that = this
     //请求数据
     wx.request({
@@ -37,8 +29,6 @@ Page({
         that.setData({
           courseList: res.data.CourseData
         })
-        //清除加载页
-        Toast.clear()
       }
     })
   },

@@ -22,15 +22,7 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-    //加载提示
-    Toast({
-      type: 'loading',
-      message: '加载中',
-      forbidClick: true,
-      loadingType: 'spinner',
-      mask: true,
-      duration: 0,
-    })
+    
     var that = this
     //请求数据
     wx.request({
@@ -52,8 +44,7 @@ Page({
           studentList: res.data.studentList,
           courseTime: that.changeTimeFormat(res.data.startTime) + ' 至 ' + that.changeTimeFormat(res.data.endTime)
         })
-        //清除加载页
-        Toast.clear()
+
       }
     })
   },
