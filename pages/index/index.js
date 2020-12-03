@@ -79,6 +79,7 @@ Page({
 
   onAuthenticate:function(){
     console.log("click")
+    var that = this
     wx.request({
       url: app.globalData.domain + 'identify',
       method:'POST',
