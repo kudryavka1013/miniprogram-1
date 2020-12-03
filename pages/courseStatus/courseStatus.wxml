@@ -15,28 +15,41 @@
 	<van-tab
 	 wx:for="{{courseStatusList}}"
 	 wx:key="index"
-	 title="{{item.week}}"
+	 title="第{{item.week}}周"
 	>
-		<van-cell
-		 size="large"
-		 center
-		 wx:for="{{item.childs}}"
-		 wx:key="index"
-		 title="{{item.courseName}}"
-		 label="{{item.weekday + ' ' + item.session}}"
-		>
-			<van-tag
-			 type="primary"
-			 plain
-			 size="large"
+		<van-collapse value="{{activeNames}}" bind:change="onChangeItem">
+			<van-collapse-item
+			 wx:for="{{item.childs}}"
+			 wx:key="index"
+			 wx:for-item="child"
+			 data-index="{{index}}"
+			 content-class="text"
+			 label="{{child.weekday + ' ' + child.session}}"
 			>
-				{{item.actualNumber}}
-			</van-tag>
-			/
-			<van-tag type="primary" size="large">
-				{{item.shouldNumber}}
-			</van-tag>
-		</van-cell>
+				<view slot="title">
+					{{child.courseName}}
+				</view>
+
+				<view slot="value">
+					<van-tag
+					 type="primary"
+					 plain
+					 size="large"
+					>
+						{{child.actualNumber}}
+					</van-tag>
+					/
+					<van-tag type="primary" size="large">
+						{{child.shouldNumber}}
+					</van-tag>
+				</view>
+
+				<view class="student">
+					<view>缺席学生：</view>
+					<text wx:for="{{child.absentStudent}}" wx:key="index" wx:for-item="as">{{as + ' '}}</text>
+				</view>
+			</van-collapse-item>
+		</van-collapse>
 	</van-tab>
 </van-tabs>
 

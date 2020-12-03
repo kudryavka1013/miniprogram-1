@@ -1,1 +1,13 @@
 /* pages/courseStatus/courseStatus.wxss */
+.student{
+    font-size: small;
+}
+
+/* 修改内置样式的字体大小 */
+.van-cell__title{
+    font-size: medium !important;
+}
+
+.van-cell__label{
+    font-size: small !important;
+}
