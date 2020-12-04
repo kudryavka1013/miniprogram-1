@@ -22,7 +22,7 @@ Page({
 
   onSaveTeacher: function () {
     //数据正确性检查
-    if (this.data.newTeacherName == '') {
+    if (this.data.newTeacherName.length == 0 ) {
       this.setData({
         isError: true
       })
@@ -208,3 +208,4 @@ Page({
 
   }
 })
+

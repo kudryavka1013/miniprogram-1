@@ -17,8 +17,7 @@ Page({
     //     session: '1-2节',
     //     actualNumber: '32',
     //     shouldNumber: '41',
-    //     absentStudent:['41324'
-    //     ,'142134']
+    //     absentStudent:['41324','142134']
     //   }, {
     //     courseName: '数据结构2',
     //     weekday: '周二',
@@ -41,7 +40,7 @@ Page({
   },
 
   loadCourseStatusList: function () {
-    加载提示
+    //加载提示
     Toast({
       type: 'loading',
       message: '加载中',
@@ -73,9 +72,9 @@ Page({
     })
   },
 
-  // onChange(event) {
-  //   console.log(event)
-  // },
+  onChange(event) {
+    console.log(event)
+  },
 
   // onClick(event) {
   //   console.log(event)

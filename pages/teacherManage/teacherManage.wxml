@@ -32,7 +32,7 @@
 			 value="{{ newTeacherName }}"
 			 label="教师姓名"
 			 placeholder="请输入姓名"
-			 border="{{ false }}"
+			 maxlength="{{8}}"
 			 bind:change="onNameChange"
 			/>
 			<view class="add-button-group">

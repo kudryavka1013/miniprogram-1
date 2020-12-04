@@ -48,17 +48,21 @@ Page({
       data: newStudent,
       success(res) {
         console.log(res)
-        setTimeout(() => {
-          that.setData({
-            isNameError: false,
-            isIdError: false,
-            isAddShow: false,
-            studentList: that.data.studentList,
-            newStudentName: '',
-            newStudentId: ''
-          })
-          that.loadStudentList()
-        }, 300);
+        if(res.data.code == 403){
+          Toast.fail("学号格式错误")
+        }else{
+          setTimeout(() => {
+            that.setData({
+              isNameError: false,
+              isIdError: false,
+              isAddShow: false,
+              studentList: that.data.studentList,
+              newStudentName: '',
+              newStudentId: ''
+            })
+            that.loadStudentList()
+          }, 300);
+        }
       }
     })
   },

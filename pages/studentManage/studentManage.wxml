@@ -30,16 +30,17 @@
 			 value="{{ newStudentName }}"
 			 label="学生姓名"
 			 placeholder="请输入姓名"
-			 border="{{ false }}"
+			 maxlength="{{8}}"
 			 bind:change="onNameChange"
 			/>
 			<van-field
 			 size="large"
+			 type="number"
 			 error="{{ isIdError }}"
 			 value="{{ newStudentId }}"
 			 label="学生学号"
 			 placeholder="请输入学号"
-			 border="{{ false }}"
+			 maxlength="{{8}}"
 			 bind:change="onIdChange"
 			/>
 			<view class="add-button-group">
